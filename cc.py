@@ -5,4 +5,6 @@
 
 
 print('this is python')
+a=int(input('enter the number'))
+print(a)
 
