@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 100
+
+// Structure to represent a stack
+struct Stack {
+    int items[MAX_SIZE];
+    int top;
+};
+
+// Initialize stack
+void initStack(struct Stack *s) {
+    s->top = -1;  // Stack is initially empty
+}
+
+// Function to check if stack is full
+int isFull(struct Stack *s) {
+    return s->top == MAX_SIZE - 1;
+}
+
+// Function to check if stack is empty
+int isEmpty(struct Stack *s) {
+    return s->top == -1;
+}
+
+// Function to push an element onto the stack
+void push(struct Stack *s, int value) {
+    if (isFull(s)) {
+        printf("Stack overflow, cannot push %d\n", value);
+    } else {
+        s->top++;
+        s->items[s->top] = value;
+        printf("%d pushed to stack\n", value);
+    }
+}
+
+// Function to pop an element from the stack
+int pop(struct Stack *s) {
+    if (isEmpty(s)) {
+        printf("Stack underflow, cannot pop\n");
+        return -1;  // Return a sentinel value indicating error
+    } else {
+        int popped = s->items[s->top];
+        s->top--;
+        printf("%d popped from stack\n", popped);
+        return popped;
+    }
+}
+
+// Function to delete all elements from the stack
+void deleteStack(struct Stack *s) {
+    s->top = -1;  // Reset top to indicate an empty stack
+    printf("Stack is cleared\n");
+}
+
+// Function to display all elements in the stack
+void showStack(struct Stack *s) {
+    if (isEmpty(s)) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements: ");
+        for (int i = 0; i <= s->top; i++) {
+            printf("%d ", s->items[i]);
+        }
+        printf("\n");
+    }
+}
+
+// Main function to demonstrate stack operations interactively
+int main() {
+    struct Stack s;
+    initStack(&s);  // Initialize the stack
+
+    int choice, value;
+    while (1) {
+        // Menu for stack operations
+        printf("\nStack Operations:\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Delete Stack\n");
+        printf("4. Show Stack\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to push: ");
+                scanf("%d", &value);
+                push(&s, value);
+                break;
+            case 2:
+                pop(&s);
+                break;
+            case 3:
+                deleteStack(&s);
+                break;
+            case 4:
+                showStack(&s);
+                break;
+            case 5:
+                printf("Exiting...\n");
+                exit(0);
+            default:
+                printf("Invalid choice. Please enter a valid option.\n");
+        }
+    }
+
+    return 0;
+}
