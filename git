@@ -1,0 +1,15 @@
+[19-06-2024 08:10] : $ cd ~/Desktop
+[19-06-2024 08:10] : $ git clone https://github.com/akshay5305/desktop-tutorial.git
+[19-06-2024 08:10] : $ cd desktop-tutorial
+[19-06-2024 08:11] : $ git add .
+[19-06-2024 08:11] : $ git add myrepo.txt
+[19-06-2024 08:11] : $ git status
+[19-06-2024 08:11] : $ git commit -m "this is new file bro"
+[19-06-2024 08:11] : $ git push origin main
+[19-06-2024 08:11] : $ git status
+[19-06-2024 08:12] : $ git fetch origin
+[19-06-2024 08:12] : $ git pull origin main
+[19-06-2024 08:13] : $ git checkout main
+[19-06-2024 08:13] : $ git reset --hard HEAD
+[19-06-2024 08:13] : $ git reset --hard HEAD~1
+[19-06-2024 08:13] : $ git rm myrepo.txt
